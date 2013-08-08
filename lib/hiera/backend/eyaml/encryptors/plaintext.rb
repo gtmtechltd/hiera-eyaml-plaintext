@@ -27,7 +27,7 @@ class Hiera
 
           def create_keys
 
-            puts "Nothing to do"
+            puts "Nothing to do, the plaintext plugin does not use keys"
 
           end
 
