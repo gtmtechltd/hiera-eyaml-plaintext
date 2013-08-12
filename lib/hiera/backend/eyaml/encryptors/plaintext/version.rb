@@ -3,7 +3,7 @@ class Hiera
     module Eyaml
       module Encryptors
         module Plaintext
-          VERSION = "0.1"
+          VERSION = "0.3"
         end
       end
     end

@@ -2,6 +2,7 @@ require 'base64'
 require 'hiera/backend/eyaml/encryptor'
 require 'hiera/backend/eyaml/utils'
 require 'hiera/backend/eyaml/plugins'
+require 'hiera/backend/eyaml/options'
 
 class Hiera
   module Backend
@@ -10,30 +11,30 @@ class Hiera
 
         class Plaintext < Encryptor
 
-          ENCRYPT_TAG = "PLAINTEXT"
+          self.tag = "PLAINTEXT"
 
-          def self.register
-            Hiera::Backend::Eyaml::Plugins.register_options([
-              { :name => :badness, :desc => "Source input is a string provided as an argument", :short => 's', :type => :string }
-            ])
+          self.options = {
+            :diagnostic_message => { :desc => "String which is output as debug when using this plugin", 
+                                     :short => 'w', 
+                                     :type => :string, 
+                                     :default => "success" }
+          }
+
+          def self.encrypt plaintext
+            diagnostic_message = self.option :diagnostic_message 
+            $stderr.puts "Encrypt_string: #{diagnostic_message}"
+            plaintext
           end
 
-          def encrypt_string plaintext
-
-            Base64.encode64(plaintext).strip
-            
+          def self.decrypt ciphertext
+            diagnostic_message = self.option :diagnostic_message 
+            $stderr.puts "Decrypt_string: #{diagnostic_message}"
+            ciphertext
           end
 
-          def decrypt_string ciphertext
-
-            Base64.decode64(ciphertext)
-
-          end
-
-          def create_keys
-
-            puts "Nothing to do, the plaintext plugin does not use keys"
-
+          def self.create_keys
+            diagnostic_message = self.option :diagnostic_message 
+            puts "Create_keys: #{diagnostic_message}"
           end
 
         end

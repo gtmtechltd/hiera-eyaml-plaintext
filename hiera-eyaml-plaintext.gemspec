@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'hiera/backend/eyaml/encryptors/plaintext_version'
+require 'hiera/backend/eyaml/encryptors/plaintext/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "hiera-eyaml-plaintext"
@@ -17,5 +17,5 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency('hiera-eyaml', '>=1.2.0')
+  gem.add_dependency('hiera-eyaml', '>=1.3.0')
 end
