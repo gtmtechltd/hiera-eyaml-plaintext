@@ -11,7 +11,7 @@ class Hiera
 
         class Plaintext < Encryptor
 
-          VERSION = "0.5.3"
+          VERSION = "0.6"
 
           self.tag = "PLAINTEXT"
 
@@ -21,10 +21,6 @@ class Hiera
                                      :type => :string, 
                                      :default => "success" }
           }
-
-          def self.version
-            Eyaml::Encryptors::Plaintext.VERSION
-          end
 
           def self.encrypt plaintext
             diagnostic_message = self.option :diagnostic_message 
