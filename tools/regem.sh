@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 GEM_NAME="hiera-eyaml-plaintext"
 
 gem uninstall ${GEM_NAME} --executables
